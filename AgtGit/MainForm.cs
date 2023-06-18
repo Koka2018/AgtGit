@@ -158,6 +158,7 @@ namespace AgtGit
                 }
                 mRepository = new GitManager(mTxtMonDirPath.Text);
                 InitCommit();
+                UpdateCommitLog();
             }
         }
 
@@ -187,6 +188,7 @@ namespace AgtGit
             mChangeTypeList.Clear();
             mRepository.AddAllFiles();
             mRepository.Commit(commitMsg, mAuthor);
+            UpdateCommitLog();
             SetMessage("CommitŠ®—¹");
         }
 
@@ -203,6 +205,12 @@ namespace AgtGit
             var time = DateTime.Now;
             var displayMsg = $"[{time.ToLongTimeString()}.{time.Millisecond}] {msg}";
             mLstMessage.Items.Add(displayMsg);
+        }
+
+        private void UpdateCommitLog()
+        {
+            mLstCommitLogs.DataSource = mRepository.GetLogs("master");
+            mLstCommitLogs.DisplayMember = "Message";
         }
 
         #endregion
