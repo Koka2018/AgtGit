@@ -188,6 +188,7 @@ namespace AgtGit
             mChangeTypeList.Clear();
             mRepository.AddAllFiles();
             mRepository.Commit(commitMsg, mAuthor);
+            UpdateCommitLog();
             SetMessage("CommitŠ®—¹");
         }
 
