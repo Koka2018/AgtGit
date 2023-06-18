@@ -44,6 +44,10 @@
             this.mFileSystemWatcher.EnableRaisingEvents = true;
             this.mFileSystemWatcher.IncludeSubdirectories = true;
             this.mFileSystemWatcher.SynchronizingObject = this;
+            this.mFileSystemWatcher.Changed += new System.IO.FileSystemEventHandler(this.mFileSystemWatcher_Changed);
+            this.mFileSystemWatcher.Created += new System.IO.FileSystemEventHandler(this.mFileSystemWatcher_Changed);
+            this.mFileSystemWatcher.Deleted += new System.IO.FileSystemEventHandler(this.mFileSystemWatcher_Changed);
+            this.mFileSystemWatcher.Renamed += new System.IO.RenamedEventHandler(this.mFileSystemWatcher_Renamed);
             // 
             // mChkRun
             // 
@@ -139,6 +143,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "MainForm";
             this.Text = "AgtGit";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mFileSystemWatcher)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

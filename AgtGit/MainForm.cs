@@ -8,7 +8,7 @@ namespace AgtGit
         private bool mIsWaitForChanged = false;
         private DateTime mLastChangedTime = DateTime.Now;
         private List<WatcherChangeTypes> mChangeTypeList = new List<WatcherChangeTypes>();
-        private string mAuthor = "AgtGIt";
+        private string mAuthor = "Koka";
 
         public MainForm()
         {
@@ -192,7 +192,7 @@ namespace AgtGit
 
         private void WaitForChanged()
         {
-            while ((DateTime.Now - mLastChangedTime).TotalSeconds < 5)
+            while ((DateTime.Now - mLastChangedTime).TotalSeconds < 3)
             {
                 Thread.Sleep(1000);
             }
