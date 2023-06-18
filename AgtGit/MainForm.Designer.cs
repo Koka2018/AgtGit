@@ -36,7 +36,14 @@
             this.mLstMessage = new System.Windows.Forms.ListBox();
             this.mTxtAuthor = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
+            this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.mLstCommitLogs = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.mFileSystemWatcher)).BeginInit();
+            this.tabControl1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.SuspendLayout();
             // 
             // mFileSystemWatcher
@@ -96,15 +103,13 @@
             // 
             // mLstMessage
             // 
-            this.mLstMessage.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.mLstMessage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mLstMessage.FormattingEnabled = true;
             this.mLstMessage.ItemHeight = 20;
-            this.mLstMessage.Location = new System.Drawing.Point(8, 117);
+            this.mLstMessage.Location = new System.Drawing.Point(3, 3);
             this.mLstMessage.Margin = new System.Windows.Forms.Padding(2);
             this.mLstMessage.Name = "mLstMessage";
-            this.mLstMessage.Size = new System.Drawing.Size(519, 164);
+            this.mLstMessage.Size = new System.Drawing.Size(500, 132);
             this.mLstMessage.TabIndex = 7;
             // 
             // mTxtAuthor
@@ -128,14 +133,59 @@
             this.label2.TabIndex = 8;
             this.label2.Text = "Author";
             // 
+            // tabControl1
+            // 
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Location = new System.Drawing.Point(12, 117);
+            this.tabControl1.Name = "tabControl1";
+            this.tabControl1.SelectedIndex = 0;
+            this.tabControl1.Size = new System.Drawing.Size(514, 289);
+            this.tabControl1.TabIndex = 10;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.mLstMessage);
+            this.tabPage1.Location = new System.Drawing.Point(4, 29);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(506, 138);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "動作ログ";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.mLstCommitLogs);
+            this.tabPage2.Location = new System.Drawing.Point(4, 29);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(506, 256);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "コミットログ";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // mLstCommitLogs
+            // 
+            this.mLstCommitLogs.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.mLstCommitLogs.FormattingEnabled = true;
+            this.mLstCommitLogs.ItemHeight = 20;
+            this.mLstCommitLogs.Location = new System.Drawing.Point(3, 3);
+            this.mLstCommitLogs.Name = "mLstCommitLogs";
+            this.mLstCommitLogs.Size = new System.Drawing.Size(500, 250);
+            this.mLstCommitLogs.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(533, 300);
+            this.ClientSize = new System.Drawing.Size(533, 418);
+            this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.mTxtAuthor);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.mLstMessage);
             this.Controls.Add(this.mBtnSelectMonDir);
             this.Controls.Add(this.mTxtMonDirPath);
             this.Controls.Add(this.label1);
@@ -145,6 +195,9 @@
             this.Text = "AgtGit";
             this.Load += new System.EventHandler(this.MainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.mFileSystemWatcher)).EndInit();
+            this.tabControl1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -160,5 +213,9 @@
         private ListBox mLstMessage;
         private TextBox mTxtAuthor;
         private Label label2;
+        private TabControl tabControl1;
+        private TabPage tabPage1;
+        private TabPage tabPage2;
+        private ListBox mLstCommitLogs;
     }
 }
