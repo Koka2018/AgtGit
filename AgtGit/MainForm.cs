@@ -1,8 +1,4 @@
-using System.IO;
-using System.Diagnostics;
 using AgtGit.Models.GitModel;
-using LibGit2Sharp;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.TaskbarClock;
 
 namespace AgtGit
 {
@@ -12,6 +8,7 @@ namespace AgtGit
         private bool mIsWaitForChanged = false;
         private DateTime mLastChangedTime = DateTime.Now;
         private List<WatcherChangeTypes> mChangeTypeList = new List<WatcherChangeTypes>();
+        private string mAuthor = "AgtGIt";
 
         public MainForm()
         {
@@ -30,6 +27,7 @@ namespace AgtGit
 #else
                 //StartMonitor();
 #endif
+                mTxtAuthor.Text = mAuthor;
             }
             catch (Exception ex)
             {
@@ -90,6 +88,18 @@ namespace AgtGit
             }
         }
 
+        private void mTxtAuthor_TextChanged(object sender, EventArgs e)
+        {
+            try
+            {
+                mAuthor = mTxtAuthor.Text;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
         #endregion
 
         #region Method
@@ -111,7 +121,7 @@ namespace AgtGit
                 File.WriteAllText(filePath, "abcde");
             }
             repo.AddAllFiles();
-            repo.Commit("Add Test", "AgtGit");
+            repo.Commit("Add Test", mAuthor);
 
             // Create branch
             var branch1 = "Branch1";
@@ -123,7 +133,7 @@ namespace AgtGit
                 File.WriteAllText(filePath, "abcde");
             }
             repo.AddAllFiles();
-            repo.Commit("Add Test2", "AgtGit");
+            repo.Commit("Add Test2", mAuthor);
 
             // Switch branch .
             repo.SwitchBranch(branch1);
@@ -156,7 +166,7 @@ namespace AgtGit
             var time = DateTime.Now;
             var commitMsg = $"[{time.ToLongTimeString()}.{time.Millisecond}] Update";
             mRepository.AddAllFiles();
-            mRepository.Commit(commitMsg, "AgtGit");
+            mRepository.Commit(commitMsg, mAuthor);
         }
 
         private async Task CommitChanges(WatcherChangeTypes changeType)
@@ -176,7 +186,7 @@ namespace AgtGit
             var commitMsg = $"[{time.ToLongTimeString()}.{time.Millisecond}] {string.Join(",", mChangeTypeList)}";
             mChangeTypeList.Clear();
             mRepository.AddAllFiles();
-            mRepository.Commit(commitMsg, "AgtGit");
+            mRepository.Commit(commitMsg, mAuthor);
             SetMessage("CommitŠ®—¹");
         }
 
